@@ -1,0 +1,3 @@
+[submodule "AulasPytho"]
+	path = AulasPytho
+	url = https://github.com/Katakhan/TrabalhosPython
