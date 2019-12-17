@@ -73,10 +73,6 @@ class Cadastro:
                 print(f"{pessoa['Codigo']};{pessoa['Nome']};{pessoa['Idade']};{pessoa['Sexo']};{pessoa['Email']};{pessoa['Telefone']}")
                 break
 
-
-
-
-
 cadastro = Cadastro()
 cadastro.ler()
 cadastro.consulta()
