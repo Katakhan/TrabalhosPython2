@@ -1,3 +1,5 @@
+from ExHBOpen import *
+
 fortwo = []
 embarcados = []
 terminal = ['piloto','official1','official2','comissaria1','comissaria2','chefe','policial','ladrao']
@@ -153,5 +155,6 @@ while proc == 's':
         print('Opção inexistente, voltar para o menu')
     proc = input('Deseja iniciar? s/n')
 
-
+    defterminal (terminal)
+    defaviao(embarcados)
     
