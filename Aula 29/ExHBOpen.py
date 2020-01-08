@@ -9,7 +9,7 @@ def defterminal (terminal):
     arquivo.close() # Fehando arquivo
     return lista
 
-def defaviao (embarcados):
+def defaviao (embarcados ):
     dados = ','.join(embarcados)       
     arquivo = open('Aula 29/aviao.txt', 'w') # Criando arquivo
     arquivo.write(dados)  # Inserindo conteúdo no arquivo
