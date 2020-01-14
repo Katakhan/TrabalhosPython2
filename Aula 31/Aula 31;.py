@@ -16,3 +16,5 @@
 # r = read
 # U = UPDATE
 # D = DELETE
+
+PIP3 INSTALL FLASK_MSQLdb
