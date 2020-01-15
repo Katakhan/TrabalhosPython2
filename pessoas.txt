@@ -1,0 +1,4 @@
+1;Antônio ;Gastaldi;17;0
+ 2;Tety;Silva;16;0
+ 3;Pablo;Cardoso;12;0
+ 
