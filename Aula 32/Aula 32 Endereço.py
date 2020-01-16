@@ -1,50 +1,53 @@
+# pip3 install flask_mysqldb
+# referencia ao Mysql
+
 import MySQLdb
 
-#Listando Todos dados da tabela
+
+#listar todas as pessoas 
 def listar_todos(c):
-    c.execute('SELECT * FROM tb_endereco')
+    c.execute('SELECT * FROM tb_pessoa')
     pessoas = c.fetchall()
     for p  in  pessoas:
         print(p)
 
-#Buscar pelo id
-def buscar_por_id(c, id):
-    c.execute(f'SELECT * FROM tb_endereco WHERE ID = {id}')
-    endereco = c.fetchone()
-    print(endereco)
-buscar_por_id(c,1)
-#Buscar por cep
-# def buscar_por_cep(c,cep):
-#     c.execute(f"SELECT * FROM tb_endereco WHERE CEP like '%{cep}%' ")
-#     for e  in  c.fetchall():
-#         print(e)
+#buscar uma pessoa pelo ID
+def buscar_por_id(c, id_pessoa):
+    c.execute(f'SELECT * FROM tb_pessoa WHERE ID = {id_pessoa}')
+    pessoa = c.fetchone()
+    print(pessoa)
 
+#buscar pessoas por sobrenome
+def buscar_por_sobrenome(c, sobrenome):
+    c.execute(f"SELECT * FROM tb_pessoa WHERE SOBRENOME like '{sobrenome}%' ")
+    for p  in  c.fetchall():
+        print(p)
 
-#Salvar Pessoa
-# def salvar(cn,cr,Rua,bairro,cep,IDEndereco='NULL'):
-#     if IDEndereco == None:
-#         IDEndereco = 'NULL'
-#     cr.execute(f"INSERT INTO tb_endereco (IDEndereco,Rua,bairro,cep,IDEndereco) VALUES ('{IDEndereco}', '{Rua}' , {cep} , {bairro} ) ")
-#     cn.commit()
+#salvar pessoa
+def salvar(cn, cr, nome, sobrenome, idade, endereco_id='NULL'):
+    cr.execute(f"INSERT INTO tb_pessoa (NOME, SOBRENOME, IDADE, ENDERECO_ID )VALUES('{nome}', '{sobrenome}',{idade},{endereco_id})")
+    cn.commit()
 
-# #Alterar Pessoa
-# def alterar(cn,cr,Id_pessoa,Nome,SobreNome,Idade, endereco_id='NULL'):
-#     cr.execute(f"UPDATE tb_pessoa SET Nome='{Nome}', Sobrenome='{SobreNome}' , Idade={Idade} , endereco_id={endereco_id}  WHERE Id_pessoa={Id_pessoa}")
-#     cn.commit()
+#alterar pessoa
+def alterar(cn, cr, id_pessoa, nome, sobrenome, idade, endereco_id='NULL'):
+    try:
+        cr.execute(f"UPDATE tb_pessoa SET NOME='{nome}', SOBRENOME='{sobrenome}', IDADE={idade}, ENDERECO_ID={endereco_id} WHERE ID_pessoa={id_pessoa} ")
+        cn.commit()
+    except (MySQLdb.Error, MySQLdb.Warning) as e:
+        if(e.args[0]==1452):
+            print(f"Erro de Foreign Key jovem, id errado")
 
-# #Deletar Pessoa
-# def deletar(cn, cr, Id_pessoa):
-#     cr.execute(f'DELETE FROM tb_pessoa WHERE Id_pessoa={Id_pessoa}')
-#     cn.commit()
+#deletar pessoa por ID
+def deletar(cn, cr, id_pessoa):
+    cr.execute(f'DELETE FROM tb_pessoa WHERE ID_pessoa ={id_pessoa}')
+    cn.commit()
 
-# conexao = MySQLdb.connect(host='localhost', database='aula_bd2', user='root', passwd='')
-# cursor= conexao.cursor()
+conexao = MySQLdb.connect(host='localhost', database='aula_bd2', user='root', passwd='')
+cursor = conexao.cursor()
 
-# #Comandos Para CRUD ;
-
-# # listar_todos(cursor)
-# # buscar_por_id(cursor, 2)
-# # buscar_por_sobrenome(cursor,'Sil')
-# # salvar(conexao,cursor,'Pablo','Cardoso',12,2)
-# # alterar(conexao,cursor, 3 ,'Rafaela','Mendes',18, 1)
-# # deletar(conexao,cursor,3)
+# listar_todos(cursor)
+# buscar_por_id(cursor, 3)
+# buscar_por_sobrenome(cursor,'Gru')
+# salvar(conexao, cursor, 'Voltolini', 'KingOfFlask', 16,5)
+alterar(conexao, cursor, 8, 'Gugu Voltolini', 'KingOfBasquete', 17, 6)
+# deletar(conexao, cursor, 7)

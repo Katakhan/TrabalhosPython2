@@ -4,22 +4,22 @@ from model.pessoa import Pessoa
 
 class PessoaDb:
     #----- Configurar a conexão
-    conexao = MySQLdb.connect(host='mysql.topskills.study', database='topskills01', user='topskills01', passwd='ts2019')
+    conexao = MySQLdb.connect(host='localhost', database='aula_bd2', user='root', passwd='')
     #----- Salva o cursor da conexão em uma variável
     cursor = conexao.cursor()
     
     def listar_todos(self):
         #----- Criação do comando SQL e passado para o cursor
-        comando_sql_select = "SELECT * FROM 01_MDG_PESSOA"
+        comando_sql_select = "SELECT * FROM tb_pessoa"
         self.cursor.execute(comando_sql_select)
         #---- Pega todos os resultados da execução do comando SQL e armazena em uma variável
         resultado = self.cursor.fetchall()
         lista_pessoas_classe = self.converter_tabela_classe(resultado)
         return lista_pessoas_classe
 
-    def buscar_por_id(self, id):
+    def buscar_por_id(self, id_pessoa):
         #----- Criação do comando SQL e passado para o cursor
-        comando_sql_select = f"SELECT * FROM 01_MDG_PESSOA WHERE ID= {id}"
+        comando_sql_select = f"SELECT * FROM tb_pessoa WHERE ID= {id_pessoa}"
         self.cursor.execute(comando_sql_select)
         resultado = self.cursor.fetchone()
         return resultado
