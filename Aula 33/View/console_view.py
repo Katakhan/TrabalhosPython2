@@ -1,8 +1,13 @@
 import sys
-sys.path.append('C:\Users\900132\Desktop\GitHub\TrabalhosPython2\Aula 33\Aula 33 - 4')
+sys.path.append('Aula 33/Aula 33 - 4')
 from controller.pessoa_controller import PessoaController
+from controller.endereco_controller import EnderecoController
 
 pc = PessoaController()
+ec = EnderecoController()
 
 for p in pc.listar_todos():
     print(p)
+
+for e in ec.listar_todos():
+    print(e)

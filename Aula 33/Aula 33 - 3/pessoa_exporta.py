@@ -1,14 +1,6 @@
-#----- Importar biblioteca do Mysql
-import MySQLdb
-
-def listar_todos():
-    #----- Configurar a conexão
-    conexao = MySQLdb.connect(host='localhost', database='aula_bd2', user='root', passwd='')
-    #----- Salva o cursor da conexão em uma variável
-    cursor = conexao.cursor()
-    #----- Criação do comando SQL e passado para o cursor
-    comando_sql_select = "SELECT * FROM tb_pessoa"
-    cursor.execute(comando_sql_select)
-    #---- Pega todos os resultados da execução do comando SQL e armazena em uma variável
-    resultado = cursor.fetchall()
-    return resultado 
+def exportar_txt(lista_pessoas):
+    #----- Cria um arquivo e atribui a uma variável 'arquivo'
+    with open('Aula33/Aula33-3/pessoas3.txt','a') as arquivo:
+        #---- Percorre a lista de dicionário e salva no arquivo em formato pré-definido
+        for p in lista_pessoas:
+            arquivo.write(f"{p['Id']};{p['Nome']};{p['Sobrenome']};{p['Idade']};{p['Endereco_Id']}\n")
