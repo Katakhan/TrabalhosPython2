@@ -38,7 +38,7 @@ class SquaDao:
             {squad.numeropessoas},
             '{squad.linguagembackend}',
             '{squad.frameworkfrontend}',
-            '{nomesquad}',
+            '{squad.nomesquad}',
 
         )"""
         self.cursor.execute(comando)
@@ -46,24 +46,21 @@ class SquaDao:
         id_inserido = self.cursor.lastrowid
         return id_inserido
 
-    # def alterar(self, pessoa:Pessoa):
-    #     comando = f""" UPDATE 01_MDG_PESSOA
-    #     SET
-    #         NOME = '{pessoa.nome}',
-    #         SOBRENOME ='{pessoa.sobrenome}',
-    #         IDADE = {pessoa.idade},
-    #         ENDERECO_ID = {pessoa.endereco.id}
-    #     WHERE ID = {pessoa.id}
-    #     """
-    #     self.cursor.execute(comando)
-    #     self.conexao.commit()
+    def alterar(self, squad:Squad):
+            comando = f""" UPDATE Squad
+            SET
+                Nome = '{squad.Nome}',
+                Descricao ='{squad.Descricao}',
+                NumeroPessoas = {squad.NumeroPessoas},
+                LinguagemBackEnd= '{squad.LinguagemBackEnd}',
+                FrameworkFrontEnd = '{squad.FrameworkFrontEnd}'
+            WHERE ID = {squad.id}
+            """
+            self.cursor.execute(comando)
+            self.conexao.commit()
 
-    # def deletar(self, id):
-    #     comando = f"DELETE FROM 01_MDG_PESSOA WHERE ID = {id}"
-    #     self.cursor.execute(comando)
-    #     self.conexao.commit()
+        def deletar(self, id):
+            comando = f"DELETE FROM Squad WHERE ID = {id}"
+            self.cursor.execute(comando)
+            self.conexao.commit()
 
-squadao = SquaDao()
-squad = Squad()
-squad.salvar('')
-print(b)
