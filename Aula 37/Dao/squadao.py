@@ -2,7 +2,8 @@ import MySQLdb
 import sys
 sys.path.append(r'C:\Users\900132\Desktop\GitHub\TrabalhosPython2\Aula 37')
 
-from Model import *
+from Dao.squadao import SquaDao
+from Model.squadmodel import Squad
 
 class SquaDao:
     conexao = MySQLdb.connect(host='localhost', database='squads', user='root', passwd='')
@@ -59,7 +60,7 @@ class SquaDao:
             self.cursor.execute(comando)
             self.conexao.commit()
 
-        def deletar(self, id):
+    def deletar(self, id):
             comando = f"DELETE FROM Squad WHERE ID = {id}"
             self.cursor.execute(comando)
             self.conexao.commit()
