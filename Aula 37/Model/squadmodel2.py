@@ -1,12 +1,8 @@
 from Dao.squadao import SquaDao
 
-class Squad:
+class Squad2:
     def __init__(self):
         self.id = 0
-        self.descricao = ''
-        self.numeropessoas = 0
-        self.linguagembackend = ''
-        self.frameworkfrontend = ''
         self.nomesquad = ''
 
     def __str__(self):
