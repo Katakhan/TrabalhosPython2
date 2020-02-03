@@ -5,8 +5,8 @@ from TrabalhosPython2.Aula50.Controllers.enderecocontroller import EnderecoContr
 app = Flask(__name__)
 api = Api(app)
 
-api.add_resource(EnderecoController, '/api/endereco')
-
+api.add_resource(EnderecoController, '/api/endereco',endpoint='enderecos')
+api.add_resource(EnderecoController, '/api/endereco/<int:id>',endpoint='endereco')
 
 @app.route('/')
 def inicio():
