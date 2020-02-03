@@ -1,6 +1,6 @@
 import MySQLdb
-
 from TrabalhosPython2.Aula50.Model.pessoamodel import PessoaModel
+
 
 class PessoaDao:
     def __init__(self):
@@ -22,10 +22,21 @@ class PessoaDao:
         p = PessoaModel(pessoa[1], pessoa[2], pessoa[3], pessoa[0])
         return p.__dict__
 
-    def insert(self, pessoa):
-        return 'Adicionando a pessoa : {}'.format(pessoa)
-    def update(self, pessoa):
-        return 'Alterando a pessoa : {}'.format(pessoa)
+    def insert(self, pessoa:PessoaModel):
+        self.cursor.execute("INSERT INTO 01_MDG_PESSOA (NOME, SOBRENOME, IDADE) VALUES('{}','{}', {} )".format(pessoa.nome ,pessoa.sobrenome,pessoa.idade))
+        self.connection.commit()
+        id = self.cursor.lastrowid
+        pessoa.id = id
+        return pessoa.__dict__
+
+    def update(self, pessoa : PessoaModel):
+
+        self.cursor.execute("UPDATE INTO 01_MDG_PESSOA SET NOME = '{}', SOBRENOME = '{}', IDADE =  {}  WHERE ID = {}".format())
+
+        self.connection.commit()
+        return 'Alterando a pessoa : {}'.format(pessoa.nome, pessoa.sobrenome, pessoa.idade , pessoa.id)
+        self.connection.commit()
+
     def remove(self, id):
         self.cursor.execute("DELETE FROM 01_MDG_PESSOA WHERE ID = {}".format(id))
         self.connection.commit()
