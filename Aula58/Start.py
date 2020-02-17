@@ -6,7 +6,6 @@ from flask import Flask
 
 from Aula58.controller.perfil_controller import PerfilController
 
-
 app = Flask(__name__)
 api = Api(app)
 

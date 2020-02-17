@@ -10,5 +10,6 @@ class Perfil():
         "biografia": self.biografia,
         "interesses": self.interesses,
         "skype": self.skype,
-        "telefone": self.telefone
+        "telefone": self.telefone.serialize()
+
         }
