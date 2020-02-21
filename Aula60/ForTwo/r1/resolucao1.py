@@ -1,23 +1,21 @@
-# técnica
-# 'piloto',
-# 'oficial1',
-# 'oficial2'
-# cabine
-# 'chefe de serviço'
-# 'comissário1'
-# 'comissário2'
-# passageiros
-# 'policial'
-# 'presidiario'
+#técnica
+    # 'piloto',
+    # 'oficial1',
+    # 'oficial2'
+#cabine
+    #'chefe de serviço'
+    #'comissário1'
+    #'comissário2'
+#passageiros
+    #'policial'
+    #'presidiario'
 
 
-terminal = {'descricao': 'terminal',
-            'pessoas': ['piloto', 'oficial1', 'oficial2', 'chefe de serviço', 'comissário1', 'comissário2', 'policial',
-                        'presidiario']}
-aviao = {'descricao': 'aviao', 'pessoas': []}
+terminal = {'descricao':'terminal', 'pessoas': ['piloto','oficial1','oficial2','chefe de serviço','comissário1','comissário2','policial','presidiario']}
+aviao = { 'descricao':'aviao', 'pessoas': [] }
 
 
-def viagem(motorista: str, passageiro: str, saida: dict, chegada: dict):
+def viagem(motorista:str, passageiro:str, saida:dict, chegada:dict):
     fortwo = embarque(motorista, passageiro, saida)
     print(f"Saindo do {saida['descricao']}")
     print('Iniciando a viagem...')
@@ -28,8 +26,7 @@ def viagem(motorista: str, passageiro: str, saida: dict, chegada: dict):
     print(saida)
     print(chegada)
 
-
-def embarque(motorista: str, passageiro: str, saida: dict):
+def embarque(motorista:str, passageiro:str, saida:dict):
     fortwo = {'motorista': motorista, 'passageiro': passageiro}
     saida['pessoas'].remove(motorista)
     print(f"{fortwo['motorista']} embarcou como motorista")
@@ -40,8 +37,7 @@ def embarque(motorista: str, passageiro: str, saida: dict):
 
     return fortwo
 
-
-def desembarque(fortwo: dict, chegada: dict):
+def desembarque(fortwo:dict, chegada:dict):
     print(f"{fortwo['motorista']} desembarcou")
     chegada['pessoas'].append(fortwo['motorista'])
     fortwo['motorista'] = ''
@@ -52,16 +48,16 @@ def desembarque(fortwo: dict, chegada: dict):
         fortwo['passageiro'] = ''
 
 
-viagem('policial', 'presidiario', terminal, aviao)
-viagem('policial', '', aviao, terminal)
-viagem('piloto', 'policial', terminal, aviao)
-viagem('piloto', '', aviao, terminal)
-viagem('piloto', 'oficial1', terminal, aviao)
-viagem('piloto', '', aviao, terminal)
-viagem('piloto', 'oficial2', terminal, aviao)
-viagem('piloto', '', aviao, terminal)
-viagem('chefe de serviço', 'piloto', terminal, aviao)
-viagem('chefe de serviço', '', aviao, terminal)
-viagem('chefe de serviço', 'comissário1', terminal, aviao)
-viagem('chefe de serviço', '', aviao, terminal)
-viagem('chefe de serviço', 'comissário2', terminal, aviao)
+viagem('policial','presidiario', terminal, aviao)
+viagem('policial','', aviao, terminal)
+viagem('piloto','policial', terminal, aviao)
+viagem('piloto','', aviao, terminal)
+viagem('piloto','oficial1', terminal, aviao)
+viagem('piloto','', aviao, terminal)
+viagem('piloto','oficial2', terminal, aviao)
+viagem('piloto','', aviao, terminal)
+viagem('chefe de serviço','piloto', terminal, aviao)
+viagem('chefe de serviço','', aviao, terminal)
+viagem('chefe de serviço','comissário1', terminal, aviao)
+viagem('chefe de serviço','', aviao, terminal)
+viagem('chefe de serviço','comissário2', terminal, aviao)
