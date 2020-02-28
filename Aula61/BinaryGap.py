@@ -21,23 +21,26 @@
 # Dado N = 32, a função deve retornar 0, porque N tem representação binária '100000'
 # e, portanto, sem lacunas binárias.
 
-numero = int(input("Informe um Numero"))
+n = int(input('Insira o número: '))
 
 
-def binarygap(numero):
-    numero = bin(numero)
-    print(numero)
+def solucao(n):
+    binario = bin(n)
+    binario = binario.replace('0b', '')
+    print(f'O número binário informado é: {binario}')
+    valida_gap = False
     maior_gap = 0
-    x = 0
-    for i in numero:
-        if i == "1":
-            x = numero.index(i) + 1
-            gap = 0
-            while numero[x] < "1":
-                gap += 1
-                x += 1
+    gap = 0
+    for i in binario:
+        if i == '1':
             if gap > maior_gap:
                 maior_gap = gap
-    print(maior_gap)
+            gap = 0
+            valida_gap = True
+        elif i == '0' and valida_gap == True:
+            gap += 1
 
-binarygap(numero)
+    print(f'O maior gap é de: {maior_gap}')
+
+
+solucao(n)
